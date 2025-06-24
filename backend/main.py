@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 
 app = FastAPI()
+
 app.include_router(items.router)
 app.include_router(users.router)
 
@@ -25,5 +26,3 @@ async def root():
 @app.on_event("startup")
 async def startup():
     await create_tables(engine)
-
-app.include_router(items.router)
